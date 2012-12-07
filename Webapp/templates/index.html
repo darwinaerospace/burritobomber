@@ -1,0 +1,11 @@
+<html>
+	<div>Please enter your secret burrito code!</div>
+
+	{% for msg in get_flashed_messages() %}
+		<div class="flash" style="color: red">{{ msg }}</div>
+	{% endfor %}
+
+	<form action="/submitcode" method="POST">
+		<input type="text" name="code">
+	</form>
+</html>

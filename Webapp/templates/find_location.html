@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<script>
+			function click_buton() {
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(submitLocation, error, {enableHighAccuracy: true})
+				} else {
+					alert('geolocation is not supported by your browser')
+				}
+			}
+
+			function submitLocation(position) {
+				document.getElementById('longitude').value = position.coords.longitude
+				document.getElementById('latitude').value = position.coords.latitude
+				document.locform.submit()
+			}
+			function error() {
+				alert("There was an error getting your location")
+			}
+		</script>
+	</head>
+	<body>
+		<button onclick="click_buton()">Request a burrito!</button>
+		<form name="locform" action="/request_burrito" method="POST">
+			<input name="longitude" id="longitude"></input>
+			<input name="latitude" id="latitude"></input>
+		</form>
+	</body>
+</html>
